@@ -117,7 +117,7 @@ export default function SocialShare() {
               <h2 className="card-title mb-4">Select Social Media Format</h2>
               <div className="form-control">
                 <select
-                  className="select select-boarded w-full"
+                  className="select select-boardered w-full"
                   value={selectedFormat}
                   onChange={(e) =>
                     setSelectedFormat(e.target.value as SocialFormat)
@@ -152,7 +152,7 @@ export default function SocialShare() {
                   />
                 </div>
               </div>
-              <div className="card-actions" justify-end mt-6>
+              <div className="card-actions justify-end mt-6">
                 <button className="btn btn-primary" onClick={handleDownload}>
                   Download for {selectedFormat}
                 </button>

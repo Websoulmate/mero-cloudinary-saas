@@ -45,7 +45,10 @@ export async function POST(request: NextRequest) {
       },
     );
 
-    return NextResponse.json({ publicId: result.public_id }, { status: 200 });
+    return NextResponse.json(
+      { publicId: result.public_id, url: result.secure_url },
+      { status: 200 },
+    );
   } catch (error) {
     console.log("Upload image failed", error);
     return NextResponse.json({ error: "Upload image failed" }, { status: 500 });
