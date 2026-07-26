@@ -51,7 +51,11 @@ export default function SocialShare() {
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Failed to upload image");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData?.error || "Failed to upload image");
+      }
+      //   if (!response.ok) throw new Error("Failed to upload image");
 
       const data = await response.json();
       if (typeof data?.url === "string") {
