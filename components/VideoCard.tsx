@@ -14,7 +14,7 @@ interface Video {
   title: string;
   publicId: string;
   compressedSize: number;
-  originalSize: number;
+  orginalSize: number;
 }
 
 dayjs.extend(realtiveTime);
@@ -69,7 +69,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
   }, []);
 
   const compressionPercentage = Math.round(
-    (1 - video.compressedSize / video.originalSize) * 100,
+    (1 - video.compressedSize / video.orginalSize) * 100,
   );
 
   useEffect(() => {
@@ -128,7 +128,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
           <FileUp size={18} className="mr-2 text-primary" />
           <div>
             <div className="font-semibold">Original</div>
-            <div>{formatSize(Number(video.originalSize))}</div>
+            <div>{formatSize(Number(video.orginalSize))}</div>
           </div>
         </div>
         <div className="flex items-center">

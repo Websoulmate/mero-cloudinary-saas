@@ -28,7 +28,7 @@ function videoUpload() {
     formData.append("file", file);
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("originalSize", file.size.toString());
+    formData.append("orginalSize", file.size.toString());
 
     try {
       const response = await axios.post("/api/video-upload", formData);
