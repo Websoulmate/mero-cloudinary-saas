@@ -98,6 +98,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
               autoPlay
               muted
               loop
+              playsInline
               className="w-full h-full object-cover"
               onError={handlePreviewError}
             />
