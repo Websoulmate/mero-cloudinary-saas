@@ -1,4 +1,4 @@
-"useClient";
+"use Client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -73,8 +73,10 @@ export default function AppLayout({
                   <div className="avatar">
                     <div className="w-8 h-8 rounded-full">
                       <img
-                        src="{user.imageUrl"
-                        alt="{user.username || user.emailAddresses[0].emailAddress}"
+                        src={user.imageUrl}
+                        alt={
+                          user.username || user.emailAddresses[0].emailAddress
+                        }
                       />
                     </div>
                   </div>
