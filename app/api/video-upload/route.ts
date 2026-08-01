@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       !process.env.CLOUDINARY_API_SECRET
     ) {
       return NextResponse.json(
-        { error: "Cloudinary credintials not found" },
+        { error: "Cloudinary credentials not found" },
         { status: 500 },
       );
     }
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     const file = formData.get("file") as File | null;
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
-    const originalSize = formData.get("originalSize") as string;
+    const orginalSize = formData.get("orginalSize") as string;
 
     if (!file) {
       return NextResponse.json({ error: "File not found" }, { status: 400 });
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
             transformation: [
               {
                 quality: "auto",
-                fetch_format: "m4",
+                fetch_format: "mp4",
               },
             ],
           },
@@ -77,11 +77,13 @@ export async function POST(request: NextRequest) {
         title,
         description,
         publicId: result.public_id,
-        orginalSize: originalSize,
+        orginalSize: orginalSize,
         compressedSize: String(result.bytes),
         duration: result.duration || 0,
       },
     });
+
+    return NextResponse.json(video, { status: 200 });
   } catch (error) {
     console.log("Upload video failed", error);
     return NextResponse.json({ error: "Upload video failed" }, { status: 500 });
